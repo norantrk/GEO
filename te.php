@@ -10,23 +10,25 @@ if ($conn->connect_error){
     die("connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
+// Taking all 5 values from the form data(input)
+		$latitude = $_REQUEST['latitude'];
+		$longitud = $_REQUEST['longitud'];
+echo "value captured";
 
-echo "hellloooo";
 
-if(isset($_POST["submit"])){
-    $latitude = $_POST['latitude'];
-    $longitude = $_POST['longitude'];
-
-    echo $latitude;
-
-$query = "UPDATE ambulances SET Ambulance_latitude = $latitude, Ambulance_longitude = $longitude WHERE id_ambulance = '001'";
-    mysqli_query($conn, $query);
-if ($conn->query($sql) == TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $query . "<br>" . $conn->error;
-}
-}
-$conn->close();
-
-?>
+		// Performing insert query execution
+		// here our table name is college
+		$sql = "INSERT INTO ambulances (Ambulance_latitude,Ambulance_longitude) VALUES ('$latitude','$longitud')";
+		
+		if(mysqli_query($conn, $sql)){
+			echo "<h3>data stored in a database successfully."
+				. " Please browse the admin"
+				. " to view the updated data</h3>";
+		} else{
+			echo "ERROR: Hush! Sorry $sql. "
+				. mysqli_error($conn);
+		}
+		
+		// Close connection
+		mysqli_close($conn);
+		?>

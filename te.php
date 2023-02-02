@@ -12,13 +12,13 @@ if ($conn->connect_error){
 echo "Connected successfully";
 // Taking all 5 values from the form data(input)
 		$latitude = $_REQUEST['latitude'];
-		$longitud = $_REQUEST['longitud'];
+		$longitude = $_REQUEST['longitude'];
 echo "value captured";
 
 
 		// Performing insert query execution
 		// here our table name is college
-		$sql = "INSERT INTO ambulances (Ambulance_latitude,Ambulance_longitude) VALUES ('$latitude','$longitud')";
+		$sql = "INSERT INTO ambulances (Ambulance_latitude,Ambulance_longitude) VALUES ('$latitude','$longitude')";
 		
 		if(mysqli_query($conn, $sql)){
 			echo "<h3>data stored in a database successfully."

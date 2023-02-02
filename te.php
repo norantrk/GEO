@@ -18,7 +18,8 @@ echo "value captured";
 
 		// Performing insert query execution
 		// here our table name is college
-		$sql = "INSERT INTO ambulances (Ambulance_latitude,Ambulance_longitude) VALUES ('$latitude','$longitude')";
+		//$sql = "INSERT INTO ambulances (Ambulance_latitude,Ambulance_longitude) VALUES ('$latitude','$longitude')";
+	$sql="UPDATE ambulances SET Ambulance_latitude = $latitude, Ambulance_longitude = $longitude WHERE id_ambulance = '001'";
 		
 		if(mysqli_query($conn, $sql)){
 			echo "<h3>data stored in a database successfully."
